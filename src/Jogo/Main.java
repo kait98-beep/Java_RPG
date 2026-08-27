@@ -5,7 +5,7 @@ import Entidades.Heroi;
 import java.util.Scanner;
 
 import static Jogo.Jogo.jogadorPerdeu;
-
+//testing github
 public class Main {
 
     /*A Variável heroi é static porque pertence à class Main e não às restantes
