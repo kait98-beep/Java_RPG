@@ -25,12 +25,13 @@
     (mecanismo de ataque do heroi), que calcula o dano consoante o tipo de ataque escolhido (normal, especial ou consumível)
     e atualiza diretamente o hp do NPC através do setHp(). No ataque normal, existe uma chance aleatória de crítico, gerada
     através da classe Random (10% de probabilidade, se nextInt(100) < 10, que adiciona um bónus de +5 de dano ao ataque).
-    Tem ainda o método loot, responsável pelos ganhos ou perdas do pós-combate. Tem o método usarPocao() que permite que
-    qualquer heroi possa utilizar poções quando necessário, sendo a ação escolhida (curar ou aumentar a força) aplicada a
-    todas as poções presentes no inventário do herói nesse momento cujo atributo correspondente (curar ou aumentoForca)
-    seja superior a zero, evitando assim aplicar efeitos nulos de poções que não sirvam para essa finalidade.
-    Se a cura for superior à quantidade de vida que nos resta, deve avisar o jogador da quantidade de excesso e
-    apresentar pergunta de confirmação. Termina com getters e setters utilizados pelas restantes classes.
+    A salientar que o ataque especial só pode ser utilizado uma vez por combate. Tem ainda o método loot, responsável pelos 
+    ganhos ou perdas do pós-combate. Tem o método usarPocao() que permite que qualquer heroi possa utilizar poções quando
+    necessário, sendo a ação escolhida (curar ou aumentar a força) aplicada a todas as poções presentes no inventário do 
+    herói nesse momento cujo atributo correspondente (curar ou aumentoForca) seja superior a zero, evitando assim aplicar
+    efeitos nulos de poções que não sirvam para essa finalidade. Se a cura for superior à quantidade de vida que nos resta, 
+    deve avisar o jogador da quantidade de excesso e apresentar pergunta de confirmação. Termina com getters e setters 
+    utilizados pelas restantes classes.
 
 ***NPC:*** Tem como objetivo ser os inimigos no combate contra o heroi. De métodos tem o mostrarDetalhes(), para mostrar
     a informação sobre o inimigo e o respetivo getter e setter.

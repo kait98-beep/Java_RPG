@@ -5,27 +5,29 @@ import Entidades.Heroi;
 import java.util.Scanner;
 
 import static Jogo.Jogo.jogadorPerdeu;
-//testing github
+
 public class Main {
 
     /*A Variável heroi é static porque pertence à class Main e não às restantes
       É chamada noutras classes, mas só é utilizada no main*/
     static Heroi heroi = null;
 
-    public static void main(String[] args) {
+
+    static void main() {
 
         Scanner scan = new Scanner(System.in);
 
-        String opcaoDerrota = "";
+        iniciarJogo(false);
 
-        while (!opcaoDerrota.equalsIgnoreCase("N")) {
-            iniciarJogo(false);
+        boolean continuarAJogar = true;
+
+        while (continuarAJogar) {
 
             if (jogadorPerdeu) {
                 System.out.println("Fim do jogo");
                 System.out.println("Deseja jogar novamente? Escreva S para sim, N para não");
 
-                opcaoDerrota = scan.nextLine();
+                String opcaoDerrota = scan.nextLine();
 
                 if (opcaoDerrota.equalsIgnoreCase("S")) {
                     System.out.println("Se sim: ");
@@ -38,25 +40,32 @@ public class Main {
 
                     if (opcaoContinuar == 1) {
                         iniciarJogo(true);
+
                     } else {
                         iniciarJogo(false);
                     }
 
-                } else if (opcaoDerrota.equalsIgnoreCase("N")) {
+                } else {
                     System.out.println("Saiu do jogo");
+                    continuarAJogar = false;
                 }
+            } else {
+                //Jogador ganhou
+                continuarAJogar = false;
             }
         }
     }
 
     //Cria a personagem e inicia um novo jogo ou inicia só um novo jogo, dependendo da decisão anterior do utilizador
-    public static void iniciarJogo(boolean novoJogo){
+    public static void iniciarJogo(boolean mesmaPersonagem){
         jogadorPerdeu = false;
 
         Jogo jogo = new Jogo();
 
-        if (!novoJogo){
+        if (!mesmaPersonagem){
             heroi = jogo.criarPersonagem();
+        } else if (heroi != null){
+            heroi.reiniciarParaEstadoInicial();
         }
 
         if(heroi != null){

@@ -30,7 +30,7 @@ public class Feiticeiro extends Heroi {
 
             //Inimigo ataca em segundo
             setHp(getHp() - forcaTotalInimigo);
-            System.out.println("O inimigo atacou, ficou com: " + getHp());
+            System.out.println("O inimigo atacou, ficaste com: " + getHp());
         }
 
         //Ganhos finais ou perderam

@@ -30,7 +30,7 @@ public class Arqueiro extends Heroi {
 
             //Inimigo ataca em segundo: o dano é aumentado em 10%
             setHp(getHp() - ((int) (forcaTotalInimigo * 1.1)));
-            System.out.println("O inimigo atacou, ficou com: " + getHp());
+            System.out.println("O inimigo atacou, ficaste com: " + getHp());
         }
 
         //Ganhos finais ou perderam

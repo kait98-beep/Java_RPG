@@ -14,6 +14,12 @@ public abstract class Heroi extends Entidade {
     private int ouro;
     private ArmaPrincipal armaPrincipal;
     private ArrayList<Consumivel> inventario;
+    private final int maxHPInicial;
+    private final int forcaInicial;
+    private final int ouroInicial;
+
+    Scanner scan = new Scanner(System.in);
+    boolean ataqueEspecialUsado = false;
 
     //Constructor
     public Heroi(String nome, int maxHP, int hp, int forca, int nivel, int ouro) {
@@ -22,9 +28,20 @@ public abstract class Heroi extends Entidade {
         this.nivel = nivel;
         this.ouro = ouro;
         this.inventario = new ArrayList<>();
+
+        this.maxHPInicial = maxHP;
+        this.forcaInicial = forca;
+        this.ouroInicial = ouro;
     }
 
-    Scanner scan = new Scanner(System.in);
+    //Stats inicialmente criados, para o jogar poder manter stats se quiser manter a pesonagem criada inicialmente
+    public void reiniciarParaEstadoInicial(){
+        setMaxHP(maxHPInicial);
+        setHp(maxHPInicial);
+        setForca(forcaInicial);
+        setOuro(ouroInicial);
+        setNivel(1);
+    }
 
     /*Vai ter uma implementação diferente em cada subclasse
       Finalidade: confrontar o herói com um NPC, numa luta, até que um fique sem vida*/
@@ -184,16 +201,22 @@ public abstract class Heroi extends Entidade {
                     if (randomNumber < 10) {
                         bonusAtaque = 5;
                     }
-
                     vidaInimigo -= (getForca() + getArmaPrincipal().getAtaque() + bonusAtaque);
                     npc.setHp(vidaInimigo);
                     menu = 1;
+
                     break;
 
                 case 2:
-                    vidaInimigo -= (getForca() + getArmaPrincipal().getAtaqueEspecial());
-                    npc.setHp(vidaInimigo);
-                    menu = 1;
+                    if (ataqueEspecialUsado) {
+                        System.out.println("Ataque especial já utilizado neste combate, escolhe outra opção");
+                        armaEscolhida = scan.nextInt();
+                    } else {
+                        vidaInimigo -= (getForca() + getArmaPrincipal().getAtaqueEspecial());
+                        npc.setHp(vidaInimigo);
+                        ataqueEspecialUsado = true;
+                        menu = 1;
+                    }
                     break;
 
                 case 3:
@@ -224,6 +247,7 @@ public abstract class Heroi extends Entidade {
                             vidaInimigo -= (getForca() + escolhido.getAtaqueInstantaneo());
                             npc.setHp(vidaInimigo);
                             getInventario().remove(escolhido);
+                            System.out.println("Consumivel utilizado e removido do inventário");
                             menu = 1;
 
                         } else {
@@ -253,6 +277,9 @@ public abstract class Heroi extends Entidade {
             setForca(getForca() + 1);
             setOuro(getOuro() + npc.getOuro());
             npc.setOuro(0);
+            ataqueEspecialUsado = false;
+
+            //Definir a variável do ataque especial false
             System.out.println("Ganhou o combate! Stats: ");
             System.out.println("Nivel: " + getNivel());
             System.out.println("Max Hp: " + getMaxHP());

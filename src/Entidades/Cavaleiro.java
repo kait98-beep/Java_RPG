@@ -23,7 +23,7 @@ public class Cavaleiro extends Heroi {
 
             //Inimigo ataca primeiro: o dano é reduzido para 80% da força original
             setHp(getHp() - ((int) (forcaTotalInimigo * 0.8)));
-            System.out.println("O inimigo atacou, ficou com: " + getHp());
+            System.out.println("O inimigo atacou, ficaste com: " + getHp());
 
             if(getHp() <= 0){
                 break;
