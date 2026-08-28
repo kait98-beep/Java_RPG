@@ -61,12 +61,14 @@ public class Jogo {
         consumiveisNaLoja();
 
         //Descrição inicial do objetivo do jogo
-        System.out.println("Há vários anos, num universo paralelo, existia o Planeta dos Gelados. Um mundo repleto de \n" +
-                "sabores e cones de diferentes figuras. Infelizmente, após a chegada dos inimigos, os gelados \n" +
-                "começaram a derreter, porque eles eram incapazes de controlar a temperatura exageradamente grande que \n" +
-                "lhes teria sido concebido. E além disso, comiam os gelados todos e não restava nada para ninguém. \n" +
-                "Foi então criado os herois dos gelados para colocar um travão nestes inimigos e restaurar a frescura \n" +
-                "e a delícia do Planeta dos Gelados! \n");
+        System.out.println("""
+                Há vários anos, num universo paralelo, existia o Planeta dos Gelados. Um mundo repleto de\s
+                sabores e cones de diferentes figuras. Infelizmente, após a chegada dos inimigos, os gelados\s
+                começaram a derreter, porque eles eram incapazes de controlar a temperatura exageradamente grande que\s
+                lhes teria sido concebido. E além disso, comiam os gelados todos e não restava nada para ninguém.\s
+                Foi então criado os herois dos gelados para colocar um travão nestes inimigos e restaurar a frescura\s
+                e a delícia do Planeta dos Gelados!\s
+                """);
 
         while (!jogadorPerdeu) {
 
@@ -397,8 +399,8 @@ public class Jogo {
         //Instanciar os inimigos
         NPC jocaIce = new NPC("Gnomo do Gelo", 50, 50, 50, 100);
         NPC jocaFire = new NPC("Gnomo do Inferno", 50, 50, 50, 100);
-        NPC dragao = new NPC("Dragão", 100, 100, 28, 40);
-        NPC ladraoFogo = new NPC("Ladrão de Fogo", 25, 25, 10, 200);
+        NPC dragao = new NPC("Dragão", 100, 100, 20, 40);
+        NPC ladraoFogo = new NPC("Ladrão de Fogo", 25, 25, 5, 200);
         NPC slimeFogo = new NPC("Slime de Fogo", 10, 10, 5, 5);
         NPC formigaFogo = new NPC("Formiga de Fogo", 5, 5, 2, 0);
 
